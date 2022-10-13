@@ -43,3 +43,33 @@ void insertatend()
         tail = newnode;
     }
 }
+
+void insertatspec()
+{
+    struct node *newnode,*temp;
+    int pos,i=1,l;
+    printf("Enter pos: ");
+    scanf("%d",&pos);
+    
+    l = getlength();
+    if(pos<0 || pos>l)
+    {
+        printf("Invalid position");
+    }
+    else
+    {
+        newnode = (struct node*)malloc(sizeof(struct node));
+        printf("Enter data: ");
+        scanf("%d", &newnode->data);
+        newnode->next = 0;
+        
+        temp = tail->next;
+        while(i<pos-1)
+        {
+            temp = temp->next;
+            i++;
+        }
+        newnode->next = temp->next;
+        temp->next = newnode;
+    }
+}
